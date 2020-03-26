@@ -1,7 +1,7 @@
 const connection = require('../database/connection');
 
 module.exports = {
-    async index(request, response) {
+    async index(request, response) { // método para listar os casos(incidents) cadastrados com limite de até 5
         const { page = 1 } = request.query;
         
         const [count] = await connection('incidents').count();
@@ -24,11 +24,11 @@ module.exports = {
         return response.json(incidents);
     },
 
-    async create(request, response) {
+    async create(request, response) { // criar novo caso(incident)
         const { title, description, value } = request.body;
         
-        // request.headers -> guarda informações do contexto de uma requisição, como a autenticação
-        const ong_id = request.headers.authorization;
+        const ong_id = request.headers.authorization; // request.headers -> onde estão guardadas informações do contexto de uma requisição, como a autenticação
+
 
         const [id] = await connection('incidents').insert({
             title,
@@ -40,7 +40,7 @@ module.exports = {
         return response.json({ id });
     },
 
-    async delete(request, response) {
+    async delete(request, response) { // excluir um caso(incident)
         const { id } = request.params;
         const ong_id = request.headers.authorization;
 

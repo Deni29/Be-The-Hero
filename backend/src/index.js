@@ -9,6 +9,3 @@ app.use(express.json()); // todas as requisições teram o corpo json
 app.use(routes);
 
 app.listen(3333); // ouvir apartir da porta 3333
-
-
-
