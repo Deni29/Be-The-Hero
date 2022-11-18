@@ -8,4 +8,4 @@ app.use(cors());
 app.use(express.json()); // todas as requisições teram o corpo json
 app.use(routes);
 
-app.listen(3333); // ouvir apartir da porta 3333
+app.listen(3333); // ouvir pela porta 3333
